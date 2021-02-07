@@ -1,6 +1,6 @@
 package main;
 
-public enum Directions {
+public enum DirectionsEnum {
     N,
     S,
     E,

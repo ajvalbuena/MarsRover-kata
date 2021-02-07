@@ -1,14 +1,13 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MarsRover {
     public int x;
     public int y;
-    public Directions direction;
+    public DirectionsEnum direction;
 
-    public MarsRover(int x, int y, Directions direction) {
+    public MarsRover(int x, int y, DirectionsEnum direction) {
         this.x = x;
         this.y = y;
         this.direction = direction;
@@ -16,18 +15,43 @@ public class MarsRover {
 
     public void move(ArrayList<String> commands) {
         for (int i = 0; i < commands.size(); i++) {
-            if (commands.get(i).equals("F")) {
-                this.setY(this.y + 1);
-            } else if (commands.get(i).equals("B")){
-                this.setY(this.y - 1);
-            } else if (commands.get(i).equals("R")) {
-                this.setDirection(Directions.E);
-            }else{
-                this.setDirection(Directions.W);
+            switch (this.getDirection()) {
+                case N:
+                    this.northStrategy(commands.get(i));
+                    break;
+                case E:
+                    this.eastStrategy(commands.get(i));
+                    break;
+                default:
+                    break;
             }
         }
     }
 
+
+    private void northStrategy(String command) {
+        if (command.equals("F")) {
+            this.setY(this.y + 1);
+        } else if (command.equals("B")) {
+            this.setY(this.y - 1);
+        } else if (command.equals("R")) {
+            this.setDirection(DirectionsEnum.E);
+        } else {
+            this.setDirection(DirectionsEnum.W);
+        }
+    }
+
+    private void eastStrategy(String command) {
+        if (command.equals("F")) {
+            this.setX(this.x + 1);
+        } else if (command.equals("B")) {
+            this.setX(this.x - 1);
+        } else if (command.equals("R")) {
+            this.setDirection(DirectionsEnum.S);
+        } else {
+            this.setDirection(DirectionsEnum.N);
+        }
+    }
 
     public int getX() {
         return x;
@@ -45,11 +69,11 @@ public class MarsRover {
         this.y = y;
     }
 
-    public Directions getDirection() {
+    public DirectionsEnum getDirection() {
         return direction;
     }
 
-    public void setDirection(Directions direction) {
+    public void setDirection(DirectionsEnum direction) {
         this.direction = direction;
     }
 
