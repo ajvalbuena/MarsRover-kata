@@ -15,25 +15,27 @@ public class MarsRover {
 
     public void move(ArrayList<String> commands) {
         for (int i = 0; i < commands.size(); i++) {
-            switch (this.getDirection()) {
-                case N:
-                    this.northStrategy(commands.get(i));
-                    break;
-                case S:
-                    this.southStrategy(commands.get(i));
-                    break;
-                case E:
-                    this.eastStrategy(commands.get(i));
-                    break;
-                case W:
-                    this.westStrategy(commands.get(i));
-                    break;
-                default:
-                    break;
-            }
+           MarsRover newRover = this.moveRover(commands.get(i), this);
+           this.setX(newRover.getX());
+           this.setY(newRover.getY());
+           this.setDirection(newRover.getDirection());
         }
     }
 
+    private MarsRover moveRover(String command, MarsRover rover) {
+        DirectionStrategy directionStrategy = new DirectionStrategy();
+        Direction direction = directionStrategy.getDirectionStrategy(this.getDirection());
+        if (command.equals("F")) {
+            return direction.moveForward(rover);
+        } else if (command.equals("B")) {
+            return direction.moveBackWard(rover);
+        } else if (command.equals("R")) {
+            return direction.turnRight(rover);
+        } else {
+            return direction.turnLeft(rover);
+        }
+
+    }
 
     private void northStrategy(String command) {
         if (command.equals("F")) {
