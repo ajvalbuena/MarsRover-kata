@@ -7,22 +7,21 @@ public class South implements Direction {
     }
 
     @Override
-    public MarsRover moveForward(MarsRover rover) {
-        return new MarsRover(rover.getX(), rover.getY()-1, rover.getDirection());
+    public void moveForward(MarsRover rover) {
+        rover.setY(rover.getY() - 1);
     }
 
     @Override
-    public MarsRover moveBackWard(MarsRover rover) {
-        return new MarsRover(rover.getX(), rover.getY()+1, rover.getDirection());
+    public void moveBackWard(MarsRover rover) {
+        rover.setY(rover.getY() + 1);
     }
 
     @Override
-    public MarsRover turnRight(MarsRover rover) {
-        return new MarsRover(rover.getX(), rover.getY(), DirectionsEnum.W);
-    }
+    public void turnRight(MarsRover rover) {
+        rover.setDirection(DirectionsEnum.W);}
 
     @Override
-    public MarsRover turnLeft(MarsRover rover) {
-        return new MarsRover(rover.getX(), rover.getY(), DirectionsEnum.E);
+    public void turnLeft(MarsRover rover) {
+        rover.setDirection(DirectionsEnum.E);
     }
 }

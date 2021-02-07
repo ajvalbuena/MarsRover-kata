@@ -5,23 +5,24 @@ public class East implements Direction {
     public boolean appliesThisDirection(DirectionsEnum direction) {
         return (DirectionsEnum.E.equals(direction));
     }
+
     @Override
-    public MarsRover moveForward(MarsRover rover) {
-        return new MarsRover(rover.getX()+1, rover.getY(), rover.getDirection());
+    public void moveForward(MarsRover rover) {
+        rover.setX(rover.getX() + 1);
     }
 
     @Override
-    public MarsRover moveBackWard(MarsRover rover) {
-        return new MarsRover(rover.getX()-1, rover.getY()+1, rover.getDirection());
+    public void moveBackWard(MarsRover rover) {
+        rover.setX(rover.getX() - 1);
     }
 
     @Override
-    public MarsRover turnRight(MarsRover rover) {
-        return new MarsRover(rover.getX(), rover.getY(), DirectionsEnum.S);
+    public void turnRight(MarsRover rover) {
+        rover.setDirection(DirectionsEnum.S);
     }
 
     @Override
-    public MarsRover turnLeft(MarsRover rover) {
-        return new MarsRover(rover.getX(), rover.getY(), DirectionsEnum.N);
+    public void turnLeft(MarsRover rover) {
+        rover.setDirection(DirectionsEnum.N);
     }
 }
