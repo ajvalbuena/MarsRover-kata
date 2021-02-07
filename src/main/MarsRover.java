@@ -6,6 +6,7 @@ public class MarsRover {
     public int x;
     public int y;
     public DirectionsEnum direction;
+
     private StrategiesUtil commandStrategy = new StrategiesUtil();
 
     public MarsRover(int x, int y, DirectionsEnum direction) {
@@ -16,12 +17,8 @@ public class MarsRover {
 
     public void move(ArrayList<String> commands) {
         for (int i = 0; i < commands.size(); i++) {
-
-            Command movement = commandStrategy.getCommandStrategy(commands.get(i));
-            MarsRover newRover = movement.applyCommand(this);
-            this.setX(newRover.getX());
-            this.setY(newRover.getY());
-            this.setDirection(newRover.getDirection());
+            Command command = commandStrategy.getCommandStrategy(commands.get(i));
+            command.applyCommand(this);
         }
     }
 
