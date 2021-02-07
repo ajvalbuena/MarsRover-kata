@@ -1,4 +1,6 @@
 package main;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MarsRover {
@@ -12,8 +14,14 @@ public class MarsRover {
         this.direction = direction;
     }
 
-    public void move (List<String> commands){
-        this.setY(1);
+    public void move(ArrayList<String> commands) {
+        for (int i = 0; i < commands.size(); i++) {
+            if (commands.get(i).equals("F")) {
+                this.setY(this.y + 1);
+            } else {
+                this.setY(this.y - 1);
+            }
+        }
     }
 
 
