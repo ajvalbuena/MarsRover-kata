@@ -60,4 +60,30 @@ public class MarsRoverTest {
         assertEquals(rover.getX(), expectedRover.getX());
         assertEquals(rover.getDirection(), expectedRover.getDirection());
     }
+
+    @Test
+    public void movements() {
+        MarsRover rover = new MarsRover(0, 0, DirectionsEnum.N);
+        ArrayList commands = new ArrayList<String>();
+        commands.add("F");
+        commands.add("R");
+        commands.add("F");
+        commands.add("L");
+        commands.add("B");
+        commands.add("F");
+        commands.add("F");
+        commands.add("F");
+        commands.add("L");
+        commands.add("B");
+        commands.add("B");
+        commands.add("L");
+        commands.add("F");
+        commands.add("B");
+        commands.add("R");
+        MarsRover expectedRover = new MarsRover(3, 3, DirectionsEnum.W);
+        rover.move(commands);
+        assertEquals(rover.getY(), expectedRover.getY());
+        assertEquals(rover.getX(), expectedRover.getX());
+        assertEquals(rover.getDirection(), expectedRover.getDirection());
+    }
 }

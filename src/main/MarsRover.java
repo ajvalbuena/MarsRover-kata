@@ -19,8 +19,14 @@ public class MarsRover {
                 case N:
                     this.northStrategy(commands.get(i));
                     break;
+                case S:
+                    this.southStrategy(commands.get(i));
+                    break;
                 case E:
                     this.eastStrategy(commands.get(i));
+                    break;
+                case W:
+                    this.westStrategy(commands.get(i));
                     break;
                 default:
                     break;
@@ -50,6 +56,30 @@ public class MarsRover {
             this.setDirection(DirectionsEnum.S);
         } else {
             this.setDirection(DirectionsEnum.N);
+        }
+    }
+
+    private void southStrategy(String command) {
+        if (command.equals("F")) {
+            this.setY(this.y - 1);
+        } else if (command.equals("B")) {
+            this.setY(this.y + 1);
+        } else if (command.equals("R")) {
+            this.setDirection(DirectionsEnum.W);
+        } else {
+            this.setDirection(DirectionsEnum.E);
+        }
+    }
+
+    private void westStrategy(String command) {
+        if (command.equals("F")) {
+            this.setX(this.x - 1);
+        } else if (command.equals("B")) {
+            this.setX(this.x + 1);
+        } else if (command.equals("R")) {
+            this.setDirection(DirectionsEnum.N);
+        } else {
+            this.setDirection(DirectionsEnum.S);
         }
     }
 
