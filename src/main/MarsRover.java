@@ -18,8 +18,12 @@ public class MarsRover {
         for (int i = 0; i < commands.size(); i++) {
             if (commands.get(i).equals("F")) {
                 this.setY(this.y + 1);
-            } else {
+            } else if (commands.get(i).equals("B")){
                 this.setY(this.y - 1);
+            } else if (commands.get(i).equals("R")) {
+                this.setDirection(Directions.E);
+            }else{
+                this.setDirection(Directions.W);
             }
         }
     }
