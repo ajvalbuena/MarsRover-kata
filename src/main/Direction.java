@@ -4,9 +4,9 @@ public interface Direction {
 
 
     boolean appliesThisDirection (DirectionsEnum direction);
-    void moveForward (MarsRover rover);
-    void moveBackWard (MarsRover rover);
-    void turnRight (MarsRover rover);
-    void turnLeft (MarsRover rover);
+    MarsRover moveForward (MarsRover rover);
+    MarsRover moveBackWard (MarsRover rover);
+    MarsRover turnRight (MarsRover rover);
+    MarsRover turnLeft (MarsRover rover);
 
 }

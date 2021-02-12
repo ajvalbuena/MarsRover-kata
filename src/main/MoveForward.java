@@ -8,8 +8,8 @@ public class MoveForward implements Command {
     }
 
     @Override
-    public void applyCommand(MarsRover rover) {
+    public MarsRover applyCommand(MarsRover rover) {
         Direction direction = directionStrategy.getDirectionStrategy(rover.getDirection());
-        direction.moveForward(rover);
+        return direction.moveForward(rover);
     }
 }

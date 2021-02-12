@@ -4,6 +4,6 @@ public interface Command {
     StrategiesFactory directionStrategy = new StrategiesFactory();
 
     boolean appliesThisCommand(String command);
-    void applyCommand(MarsRover rover);
+    MarsRover applyCommand(MarsRover rover);
 }
 

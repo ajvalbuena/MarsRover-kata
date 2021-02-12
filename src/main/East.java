@@ -7,22 +7,22 @@ public class East implements Direction {
     }
 
     @Override
-    public void moveForward(MarsRover rover) {
-        rover.setX(rover.getX() + 1);
+    public MarsRover moveForward(MarsRover rover) {
+        return new MarsRover(rover.getX() + 1, rover.getY(), rover.getDirection());
     }
 
     @Override
-    public void moveBackWard(MarsRover rover) {
-        rover.setX(rover.getX() - 1);
+    public MarsRover moveBackWard(MarsRover rover) {
+        return new MarsRover(rover.getX() - 1, rover.getY(), rover.getDirection());
     }
 
     @Override
-    public void turnRight(MarsRover rover) {
-        rover.setDirection(DirectionsEnum.S);
+    public MarsRover turnRight(MarsRover rover) {
+        return new MarsRover(rover.getX(), rover.getY(), DirectionsEnum.S);
     }
 
     @Override
-    public void turnLeft(MarsRover rover) {
-        rover.setDirection(DirectionsEnum.N);
+    public MarsRover turnLeft(MarsRover rover) {
+        return new MarsRover(rover.getX(), rover.getY(), DirectionsEnum.N);
     }
 }

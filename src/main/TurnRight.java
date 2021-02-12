@@ -8,8 +8,8 @@ public class TurnRight implements Command {
     }
 
     @Override
-    public void applyCommand(MarsRover rover) {
+    public MarsRover applyCommand(MarsRover rover) {
         Direction direction = directionStrategy.getDirectionStrategy(rover.getDirection());
-        direction.turnRight(rover);
+        return direction.turnRight(rover);
     }
 }

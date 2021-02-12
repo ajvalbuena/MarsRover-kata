@@ -15,11 +15,13 @@ public class MarsRover {
         this.direction = direction;
     }
 
-    public void move(ArrayList<String> commands) {
+    public MarsRover move(ArrayList<String> commands, MarsRover marsRover) {
+        MarsRover rover = marsRover;
         for (int i = 0; i < commands.size(); i++) {
             Command command = commandStrategy.getCommandStrategy(commands.get(i));
-            command.applyCommand(this);
+            rover = command.applyCommand(rover);
         }
+        return rover;
     }
 
     public int getX() {
