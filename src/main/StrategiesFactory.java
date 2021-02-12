@@ -1,6 +1,6 @@
 package main;
 
-public class StrategiesUtil {
+public class StrategiesFactory {
 
     Direction[] directionOptions = {new North(), new South(), new East(), new West()};
     Command[] commandOptions = {new MoveForward(), new MoveBackward(), new TurnLeft(), new TurnRight()};

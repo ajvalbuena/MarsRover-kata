@@ -3,11 +3,11 @@ package main;
 import java.util.ArrayList;
 
 public class MarsRover {
-    public int x;
-    public int y;
-    public DirectionsEnum direction;
+    private int x;
+    private int y;
+    private DirectionsEnum direction;
 
-    private StrategiesUtil commandStrategy = new StrategiesUtil();
+    private StrategiesFactory commandStrategy = new StrategiesFactory();
 
     public MarsRover(int x, int y, DirectionsEnum direction) {
         this.x = x;
