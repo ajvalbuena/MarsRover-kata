@@ -1,10 +1,6 @@
 package main;
 
 public class West implements Direction {
-    @Override
-    public boolean appliesThisDirection(DirectionsEnum direction) {
-        return (DirectionsEnum.W.equals(direction));
-    }
 
     @Override
     public MarsRover moveForward(MarsRover rover) {

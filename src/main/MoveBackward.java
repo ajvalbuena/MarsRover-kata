@@ -9,7 +9,7 @@ public class MoveBackward implements Command {
 
     @Override
     public MarsRover applyCommand(MarsRover rover) {
-        Direction direction = directionStrategy.getDirectionStrategy(rover.getDirection());
+        Direction direction = rover.getDirection().getDirection();
         return direction.moveBackWard(rover);
     }
 }
