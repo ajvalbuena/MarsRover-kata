@@ -1,8 +1,25 @@
 package main;
 
-public interface Command {
+public enum Command {
+    F("F", "moveForward"),
+    B("B", "moveBackward"),
+    L("L", "turnLeft"),
+    R("R", "turnRight");
 
-    boolean appliesThisCommand(String command);
-    MarsRover applyCommand(MarsRover rover);
+    private final String command;
+    private final String commandMovement;
+
+    Command(String command, String commandMovement) {
+        this.command = command;
+        this.commandMovement = commandMovement;
+    }
+
+    public String getCommandMovement() {
+        return commandMovement;
+    }
+
+
 }
+
+
 
