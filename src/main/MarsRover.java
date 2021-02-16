@@ -2,6 +2,7 @@ package main;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MarsRover {
     private int x;
@@ -14,12 +15,25 @@ public class MarsRover {
         this.direction = direction;
     }
 
-    public MarsRover move(ArrayList<String> commands, MarsRover marsRover) throws Exception {
+    public MarsRover move(List<Command> commands, MarsRover marsRover) {
         MarsRover rover = marsRover;
-        for (int i = 0; i < commands.size(); i++) {
-            String command = Command.valueOf(commands.get(i)).getCommandMovement();
-            Method movement = rover.getDirection().getClass().getDeclaredMethod(command, MarsRover.class);
-            rover = (MarsRover) movement.invoke(rover.getDirection(), rover);
+        for (Command command: commands) {
+            switch (command) {
+                case F:
+                    rover = rover.getDirection().moveForward(rover);
+                    break;
+                case B:
+                    rover = rover.getDirection().moveBackward(rover);
+                    break;
+                case R:
+                    rover = rover.getDirection().turnRight(rover);
+                    break;
+                case L:
+                    rover = rover.getDirection().turnLeft(rover);
+                    break;
+                default:
+                    break;
+            }
         }
         return rover;
     }

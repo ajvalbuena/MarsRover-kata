@@ -1,7 +1,15 @@
 package main;
 
-public enum Direction {
-    N {
+public abstract class Direction {
+    abstract MarsRover turnRight(MarsRover rover);
+
+    abstract MarsRover turnLeft(MarsRover rover);
+
+    abstract MarsRover moveForward(MarsRover rover);
+
+    abstract MarsRover moveBackward(MarsRover rover);
+
+   public final static Direction N = new Direction() {
         @Override
         public MarsRover turnLeft(MarsRover rover) {
             return new MarsRover(rover.getX(), rover.getY(), Direction.W);
@@ -21,9 +29,9 @@ public enum Direction {
         MarsRover moveBackward(MarsRover rover) {
             return new MarsRover(rover.getX(), rover.getY() - 1, rover.getDirection());
         }
-    },
+    };
 
-    S {
+    public final static Direction S = new Direction() {
         @Override
         public MarsRover turnRight(MarsRover rover) {
             return new MarsRover(rover.getX(), rover.getY(), Direction.W);
@@ -43,9 +51,9 @@ public enum Direction {
         public MarsRover moveBackward(MarsRover rover) {
             return new MarsRover(rover.getX(), rover.getY() + 1, rover.getDirection());
         }
-    },
+    };
 
-    E {
+    public final static Direction E = new Direction() {
         @Override
         public MarsRover turnRight(MarsRover rover) {
             return new MarsRover(rover.getX(), rover.getY(), Direction.S);
@@ -65,9 +73,9 @@ public enum Direction {
         public MarsRover moveBackward(MarsRover rover) {
             return new MarsRover(rover.getX() - 1, rover.getY(), rover.getDirection());
         }
-    },
+    };
 
-    W {
+    public final static Direction W = new Direction() {
         @Override
         public MarsRover turnRight(MarsRover rover) {
             return new MarsRover(rover.getX(), rover.getY(), Direction.N);
@@ -90,13 +98,7 @@ public enum Direction {
     };
 
 
-    abstract MarsRover turnRight(MarsRover rover);
 
-    abstract MarsRover turnLeft(MarsRover rover);
-
-    abstract MarsRover moveForward(MarsRover rover);
-
-    abstract MarsRover moveBackward(MarsRover rover);
 }
 
 

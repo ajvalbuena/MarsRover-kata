@@ -1,20 +1,21 @@
 package test;
 
+import main.Command;
 import main.Direction;
 import main.MarsRover;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MarsRoverTest {
 
     @Test
-    public void oneStepForwardForNorth() throws Exception {
+    public void oneStepForwardForNorth() {
         MarsRover initRover = new MarsRover(0, 0, Direction.N);
-        ArrayList commands = new ArrayList<String>();
-        commands.add("F");
+        List<Command> commands = Arrays.asList(Command.F);
         MarsRover expectedRover = new MarsRover(0, 1, Direction.N);
         MarsRover finalRover = initRover.move(commands, initRover);
         assertEquals(finalRover.getY(), expectedRover.getY());
@@ -23,11 +24,9 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void ForwardAndBackwardForNorth() throws Exception {
+    public void ForwardAndBackwardForNorth()  {
         MarsRover initRover = new MarsRover(0, 0, Direction.N);
-        ArrayList commands = new ArrayList<String>();
-        commands.add("F");
-        commands.add("B");
+        List<Command> commands = Arrays.asList(Command.F, Command.B);
         MarsRover expectedRover = new MarsRover(0, 0, Direction.N);
         MarsRover finalRover = initRover.move(commands, initRover);
         assertEquals(finalRover.getY(), expectedRover.getY());
@@ -36,11 +35,10 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void ForwardAndRightForNorth() throws Exception {
+    public void ForwardAndRightForNorth()  {
         MarsRover initRover = new MarsRover(0, 0, Direction.N);
-        ArrayList commands = new ArrayList<String>();
-        commands.add("F");
-        commands.add("R");
+        List<Command> commands = Arrays.asList(Command.F, Command.R);
+
         MarsRover expectedRover = new MarsRover(0, 1, Direction.E);
         MarsRover finalRover = initRover.move(commands, initRover);
         assertEquals(finalRover.getY(), expectedRover.getY());
@@ -49,11 +47,9 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void ForwardAndLeftForEast() throws Exception {
+    public void ForwardAndLeftForEast()  {
         MarsRover initRover = new MarsRover(0, 0, Direction.E);
-        ArrayList commands = new ArrayList<String>();
-        commands.add("F");
-        commands.add("L");
+        List<Command> commands = Arrays.asList(Command.F, Command.L);
         MarsRover expectedRover = new MarsRover(1, 0, Direction.N);
         MarsRover finalRover = initRover.move(commands, initRover);
         assertEquals(finalRover.getY(), expectedRover.getY());
@@ -62,24 +58,9 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void movements() throws Exception {
+    public void movements()  {
         MarsRover initRover = new MarsRover(0, 0, Direction.N);
-        ArrayList commands = new ArrayList<String>();
-        commands.add("F");
-        commands.add("R");
-        commands.add("F");
-        commands.add("L");
-        commands.add("B");
-        commands.add("F");
-        commands.add("F");
-        commands.add("F");
-        commands.add("L");
-        commands.add("B");
-        commands.add("B");
-        commands.add("L");
-        commands.add("F");
-        commands.add("B");
-        commands.add("R");
+        List<Command> commands = Arrays.asList(Command.F, Command.R, Command.F, Command.L, Command.B, Command.F, Command.F, Command.F, Command.L, Command.B, Command.B, Command.L, Command.F, Command.B, Command.R);
         MarsRover expectedRover = new MarsRover(3, 3, Direction.W);
         MarsRover finalRover = initRover.move(commands, initRover);
         assertEquals(finalRover.getY(), expectedRover.getY());
