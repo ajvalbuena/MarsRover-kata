@@ -1,15 +1,24 @@
 package main;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Direction {
     abstract MarsRover turnRight(MarsRover rover);
 
     abstract MarsRover turnLeft(MarsRover rover);
 
-    abstract MarsRover moveForward(MarsRover rover);
-
-    abstract MarsRover moveBackward(MarsRover rover);
+    abstract MarsRover move(MarsRover rover, Command command);
 
    public final static Direction N = new Direction() {
+       Map<Command, Vector> vectorByCommand = new HashMap<Command, Vector>(){
+           {
+               super.put(Command.F, new Vector(0,1));
+               super.put(Command.B, new Vector(0,-1));
+           }
+       };
+
+
         @Override
         public MarsRover turnLeft(MarsRover rover) {
             return new MarsRover(rover.getX(), rover.getY(), Direction.W);
@@ -21,17 +30,19 @@ public abstract class Direction {
         }
 
         @Override
-        MarsRover moveForward(MarsRover rover) {
-            return new MarsRover(rover.getX(), rover.getY() + 1, rover.getDirection());
-        }
-
-        @Override
-        MarsRover moveBackward(MarsRover rover) {
-            return new MarsRover(rover.getX(), rover.getY() - 1, rover.getDirection());
+        MarsRover move(MarsRover rover, Command command){
+            Vector vector = vectorByCommand.get(command);
+            return new MarsRover(rover.getX() + vector.getX(), rover.getY()+vector.getY(), rover.getDirection());
         }
     };
 
     public final static Direction S = new Direction() {
+        Map<Command, Vector> vectorByCommand = new HashMap<Command, Vector>(){
+            {
+                super.put(Command.F, new Vector(0,-1));
+                super.put(Command.B, new Vector(0,1));
+            }
+        };
         @Override
         public MarsRover turnRight(MarsRover rover) {
             return new MarsRover(rover.getX(), rover.getY(), Direction.W);
@@ -43,17 +54,19 @@ public abstract class Direction {
         }
 
         @Override
-        public MarsRover moveForward(MarsRover rover) {
-            return new MarsRover(rover.getX(), rover.getY() - 1, rover.getDirection());
-        }
-
-        @Override
-        public MarsRover moveBackward(MarsRover rover) {
-            return new MarsRover(rover.getX(), rover.getY() + 1, rover.getDirection());
+        MarsRover move(MarsRover rover, Command command){
+            Vector vector = vectorByCommand.get(command);
+            return new MarsRover(rover.getX() + vector.getX(), rover.getY()+vector.getY(), rover.getDirection());
         }
     };
 
     public final static Direction E = new Direction() {
+        Map<Command, Vector> vectorByCommand = new HashMap<Command, Vector>(){
+            {
+                super.put(Command.F, new Vector(1,0));
+                super.put(Command.B, new Vector(-1,0));
+            }
+        };
         @Override
         public MarsRover turnRight(MarsRover rover) {
             return new MarsRover(rover.getX(), rover.getY(), Direction.S);
@@ -65,17 +78,19 @@ public abstract class Direction {
         }
 
         @Override
-        public MarsRover moveForward(MarsRover rover) {
-            return new MarsRover(rover.getX() + 1, rover.getY(), rover.getDirection());
-        }
-
-        @Override
-        public MarsRover moveBackward(MarsRover rover) {
-            return new MarsRover(rover.getX() - 1, rover.getY(), rover.getDirection());
+        MarsRover move(MarsRover rover, Command command){
+            Vector vector = vectorByCommand.get(command);
+            return new MarsRover(rover.getX() + vector.getX(), rover.getY()+vector.getY(), rover.getDirection());
         }
     };
 
     public final static Direction W = new Direction() {
+        Map<Command, Vector> vectorByCommand = new HashMap<Command, Vector>(){
+            {
+                super.put(Command.F, new Vector(-1,0));
+                super.put(Command.B, new Vector(1,0));
+            }
+        };
         @Override
         public MarsRover turnRight(MarsRover rover) {
             return new MarsRover(rover.getX(), rover.getY(), Direction.N);
@@ -87,13 +102,9 @@ public abstract class Direction {
         }
 
         @Override
-        public MarsRover moveForward(MarsRover rover) {
-            return new MarsRover(rover.getX() - 1, rover.getY(), rover.getDirection());
-        }
-
-        @Override
-        public MarsRover moveBackward(MarsRover rover) {
-            return new MarsRover(rover.getX() + 1, rover.getY(), rover.getDirection());
+        MarsRover move(MarsRover rover, Command command){
+            Vector vector = vectorByCommand.get(command);
+            return new MarsRover(rover.getX() + vector.getX(), rover.getY()+vector.getY(), rover.getDirection());
         }
     };
 

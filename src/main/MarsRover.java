@@ -20,11 +20,10 @@ public class MarsRover {
         for (Command command: commands) {
             switch (command) {
                 case F:
-                    rover = rover.getDirection().moveForward(rover);
-                    break;
                 case B:
-                    rover = rover.getDirection().moveBackward(rover);
+                    rover = rover.getDirection().move(rover, command);
                     break;
+
                 case R:
                     rover = rover.getDirection().turnRight(rover);
                     break;
