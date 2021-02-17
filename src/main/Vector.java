@@ -9,6 +9,10 @@ public class Vector {
         this.y = y;
     }
 
+    public Point applyVector (MarsRover rover){
+        return new Point(this.getX()+ rover.getPoint().getX(), this.getY()+ rover.getPoint().getY());
+    }
+
     public int getX() {
         return x;
     }

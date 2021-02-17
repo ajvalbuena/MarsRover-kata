@@ -9,10 +9,6 @@ public class Point {
         this.y = y;
     }
 
-    public Point applyVector (Vector vector){
-        return new Point(this.getX()+ vector.getX(), this.getY()+vector.getY());
-    }
-
     public int getX() {
         return x;
     }

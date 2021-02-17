@@ -32,7 +32,7 @@ public abstract class Direction {
         @Override
         MarsRover move(MarsRover rover, Command command){
             Vector vector = vectorByCommand.get(command);
-            return new MarsRover(rover.getPoint().applyVector(vector), rover.getDirection());
+            return new MarsRover(vector.applyVector(rover), rover.getDirection());
         }
     };
 
@@ -56,7 +56,7 @@ public abstract class Direction {
         @Override
         MarsRover move(MarsRover rover, Command command){
             Vector vector = vectorByCommand.get(command);
-            return new MarsRover(rover.getPoint().applyVector(vector), rover.getDirection());
+            return new MarsRover(vector.applyVector(rover), rover.getDirection());
         }
     };
 
@@ -80,7 +80,7 @@ public abstract class Direction {
         @Override
         MarsRover move(MarsRover rover, Command command){
             Vector vector = vectorByCommand.get(command);
-            return new MarsRover(rover.getPoint().applyVector(vector), rover.getDirection());
+            return new MarsRover(vector.applyVector(rover), rover.getDirection());
         }
     };
 
@@ -104,7 +104,7 @@ public abstract class Direction {
         @Override
         MarsRover move(MarsRover rover, Command command){
             Vector vector = vectorByCommand.get(command);
-            return new MarsRover(rover.getPoint().applyVector(vector), rover.getDirection());
+            return new MarsRover(vector.applyVector(rover), rover.getDirection());
         }
     };
 
