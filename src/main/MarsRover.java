@@ -5,19 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MarsRover {
-    private int x;
-    private int y;
+    private Point point;
     private Direction direction;
 
-    public MarsRover(int x, int y, Direction direction) {
-        this.x = x;
-        this.y = y;
+
+    public MarsRover(Point point, Direction direction) {
+        this.point = point;
         this.direction = direction;
     }
 
     public MarsRover move(List<Command> commands, MarsRover marsRover) {
         MarsRover rover = marsRover;
-        for (Command command: commands) {
+        for (Command command : commands) {
             switch (command) {
                 case F:
                 case B:
@@ -37,18 +36,13 @@ public class MarsRover {
         return rover;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
     public Direction getDirection() {
         return direction;
     }
 
+    public Point getPoint() {
+        return point;
+    }
 
 }
 
