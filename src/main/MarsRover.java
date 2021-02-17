@@ -24,11 +24,10 @@ public class MarsRover {
                     break;
 
                 case R:
-                    rover = rover.getDirection().turnRight(rover);
-                    break;
                 case L:
-                    rover = rover.getDirection().turnLeft(rover);
+                    rover = rover.getDirection().turn(rover, command);
                     break;
+
                 default:
                     break;
             }
