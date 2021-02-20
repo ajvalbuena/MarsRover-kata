@@ -1,9 +1,6 @@
 package test;
 
-import main.Command;
-import main.Direction;
-import main.MarsRover;
-import main.Point;
+import main.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

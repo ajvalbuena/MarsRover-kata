@@ -1,7 +1,5 @@
 package main;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MarsRover {
@@ -17,8 +15,7 @@ public class MarsRover {
     public MarsRover move(List<Command> commands, MarsRover marsRover) {
         MarsRover rover = marsRover;
         for (Command command : commands) {
-            Movement movement = command.getMovement();
-            rover = movement.move(rover);
+            rover = command.move(rover);
         }
         return rover;
     }
