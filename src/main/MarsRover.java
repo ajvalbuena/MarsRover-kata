@@ -17,20 +17,8 @@ public class MarsRover {
     public MarsRover move(List<Command> commands, MarsRover marsRover) {
         MarsRover rover = marsRover;
         for (Command command : commands) {
-            switch (command) {
-                case F:
-                case B:
-                    rover = rover.getDirection().move(rover, command);
-                    break;
-
-                case R:
-                case L:
-                    rover = rover.getDirection().turn(rover, command);
-                    break;
-
-                default:
-                    break;
-            }
+            Movement movement = command.getMovement();
+            rover = movement.move(rover);
         }
         return rover;
     }
