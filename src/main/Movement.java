@@ -1,5 +1,5 @@
 package main;
 
-public interface Vector {
+public interface Movement {
     MarsRover applyVector(MarsRover rover);
 }

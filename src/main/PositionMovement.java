@@ -1,10 +1,10 @@
 package main;
 
-public class VectorPosicion implements Vector {
+public class PositionMovement implements Movement {
     private int x;
     private int y;
 
-    public VectorPosicion(int x, int y) {
+    public PositionMovement(int x, int y) {
         this.x = x;
         this.y = y;
     }

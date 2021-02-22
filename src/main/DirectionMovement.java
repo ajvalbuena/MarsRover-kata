@@ -1,9 +1,9 @@
 package main;
 
-public class VectorDireccion implements Vector {
+public class DirectionMovement implements Movement {
     private Direction direction;
 
-    public VectorDireccion(Direction direction) {
+    public DirectionMovement(Direction direction) {
         this.direction = direction;
     }
 
