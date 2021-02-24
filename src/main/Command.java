@@ -2,15 +2,15 @@ package main;
 
 import java.util.HashMap;
 
-public  class Command {
-    private HashMap<Direction, Movement> vectorByDirection;
+public class Command {
+    private HashMap<Direction, Movement> movementByDirection;
 
-    public Command(HashMap<Direction, Movement> vectorByDirection) {
-        this.vectorByDirection = vectorByDirection;
+    public Command(HashMap<Direction, Movement> movementByDirection) {
+        this.movementByDirection = movementByDirection;
     }
 
     MarsRover move(MarsRover rover) {
-        Movement movement = vectorByDirection.get(rover.getDirection());
+        Movement movement = movementByDirection.get(rover.getDirection());
         return movement.applyVector(rover);
     }
 
