@@ -10,8 +10,27 @@ public class PositionMovement implements Movement {
     }
 
     @Override
-    public MarsRover applyVector(MarsRover rover){
-        Point newPoint = new Point(this.x+ rover.getPoint().getX(), this.y+ rover.getPoint().getY());
+    public MarsRover applyVector(MarsRover rover) {
+        int newX = this.x + rover.getPoint().getX();
+        int newY = this.y + rover.getPoint().getY();
+
+        if (newY == 181) {
+            newY = -179;
+        }
+        if (newY == -180) {
+            newY = 180;
+        }
+        if (newX == 181) {
+            newX = -179;
+        }
+        if (newX == -180) {
+            newX = 180;
+        }
+
+
+
+        Point newPoint = new Point(newX, newY);
+
         return new MarsRover(newPoint, rover.getDirection());
     }
 

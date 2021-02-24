@@ -68,4 +68,69 @@ public class MarsRoverTest {
         assertEquals(finalRover.getPoint().getX(), expectedRover.getPoint().getX());
         assertEquals(finalRover.getDirection(), expectedRover.getDirection());
     }
+
+    @Test
+    public void northernmostPointInEarth()  {
+        MarsRover initRover = new MarsRover(new Point(0,179), Direction.N);
+        List<Command> commands = Arrays.asList(Command.F, Command.F);
+        MarsRover expectedRover = new MarsRover(new Point(0,-179), Direction.N);
+        MarsRover finalRover = initRover.move(commands, initRover);
+        assertEquals(finalRover.getPoint().getY(), expectedRover.getPoint().getY());
+        assertEquals(finalRover.getPoint().getX(), expectedRover.getPoint().getX());
+        assertEquals(finalRover.getDirection(), expectedRover.getDirection());
+    }
+
+    @Test
+    public void southernmostPointInEarth()  {
+        MarsRover initRover = new MarsRover(new Point(0,-179), Direction.S);
+        List<Command> commands = Arrays.asList(Command.F);
+        MarsRover expectedRover = new MarsRover(new Point(0,180), Direction.S);
+        MarsRover finalRover = initRover.move(commands, initRover);
+        assertEquals(finalRover.getPoint().getY(), expectedRover.getPoint().getY());
+        assertEquals(finalRover.getPoint().getX(), expectedRover.getPoint().getX());
+        assertEquals(finalRover.getDirection(), expectedRover.getDirection());
+    }
+
+    @Test
+    public void easternmostPointInEarth()  {
+        MarsRover initRover = new MarsRover(new Point(180,0), Direction.E);
+        List<Command> commands = Arrays.asList(Command.F);
+        MarsRover expectedRover = new MarsRover(new Point(-179,0), Direction.E);
+        MarsRover finalRover = initRover.move(commands, initRover);
+        assertEquals(finalRover.getPoint().getY(), expectedRover.getPoint().getY());
+        assertEquals(finalRover.getPoint().getX(), expectedRover.getPoint().getX());
+        assertEquals(finalRover.getDirection(), expectedRover.getDirection());
+    }
+    @Test
+    public void westernmostPointInEarth()  {
+        MarsRover initRover = new MarsRover(new Point(-179,0), Direction.W);
+        List<Command> commands = Arrays.asList(Command.F);
+        MarsRover expectedRover = new MarsRover(new Point(180,0), Direction.W);
+        MarsRover finalRover = initRover.move(commands, initRover);
+        assertEquals(finalRover.getPoint().getY(), expectedRover.getPoint().getY());
+        assertEquals(finalRover.getPoint().getX(), expectedRover.getPoint().getX());
+        assertEquals(finalRover.getDirection(), expectedRover.getDirection());
+    }
+
+    @Test
+    public void negativeLimitsInEarth()  {
+        MarsRover initRover = new MarsRover(new Point(-179,-179), Direction.N);
+        List<Command> commands = Arrays.asList(Command.B, Command.R, Command.B);
+        MarsRover expectedRover = new MarsRover(new Point(180,180), Direction.E);
+        MarsRover finalRover = initRover.move(commands, initRover);
+        assertEquals(finalRover.getPoint().getY(), expectedRover.getPoint().getY());
+        assertEquals(finalRover.getPoint().getX(), expectedRover.getPoint().getX());
+        assertEquals(finalRover.getDirection(), expectedRover.getDirection());
+    }
+
+    @Test
+    public void positiveLimitsInEarth()  {
+        MarsRover initRover = new MarsRover(new Point(180,180), Direction.W);
+        List<Command> commands = Arrays.asList(Command.B, Command.L, Command.B);
+        MarsRover expectedRover = new MarsRover(new Point(-179,-179), Direction.S);
+        MarsRover finalRover = initRover.move(commands, initRover);
+        assertEquals(finalRover.getPoint().getY(), expectedRover.getPoint().getY());
+        assertEquals(finalRover.getPoint().getX(), expectedRover.getPoint().getX());
+        assertEquals(finalRover.getDirection(), expectedRover.getDirection());
+    }
 }
