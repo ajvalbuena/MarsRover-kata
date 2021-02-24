@@ -70,7 +70,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void northernmostPointInEarth()  {
+    public void northernmostPointInMars()  {
         MarsRover initRover = new MarsRover(new Point(0,179), Direction.N);
         List<Command> commands = Arrays.asList(Command.F, Command.F);
         MarsRover expectedRover = new MarsRover(new Point(0,-179), Direction.N);
@@ -81,7 +81,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void southernmostPointInEarth()  {
+    public void southernmostPointInMars()  {
         MarsRover initRover = new MarsRover(new Point(0,-179), Direction.S);
         List<Command> commands = Arrays.asList(Command.F);
         MarsRover expectedRover = new MarsRover(new Point(0,180), Direction.S);
@@ -92,7 +92,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void easternmostPointInEarth()  {
+    public void easternmostPointInMars()  {
         MarsRover initRover = new MarsRover(new Point(180,0), Direction.E);
         List<Command> commands = Arrays.asList(Command.F);
         MarsRover expectedRover = new MarsRover(new Point(-179,0), Direction.E);
@@ -102,7 +102,7 @@ public class MarsRoverTest {
         assertEquals(finalRover.getDirection(), expectedRover.getDirection());
     }
     @Test
-    public void westernmostPointInEarth()  {
+    public void westernmostPointInMars()  {
         MarsRover initRover = new MarsRover(new Point(-179,0), Direction.W);
         List<Command> commands = Arrays.asList(Command.F);
         MarsRover expectedRover = new MarsRover(new Point(180,0), Direction.W);
@@ -113,7 +113,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void negativeLimitsInEarth()  {
+    public void negativeLimitsInMars()  {
         MarsRover initRover = new MarsRover(new Point(-179,-179), Direction.N);
         List<Command> commands = Arrays.asList(Command.B, Command.R, Command.B);
         MarsRover expectedRover = new MarsRover(new Point(180,180), Direction.E);
@@ -124,7 +124,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void positiveLimitsInEarth()  {
+    public void positiveLimitsInMars()  {
         MarsRover initRover = new MarsRover(new Point(180,180), Direction.W);
         List<Command> commands = Arrays.asList(Command.B, Command.L, Command.B);
         MarsRover expectedRover = new MarsRover(new Point(-179,-179), Direction.S);
