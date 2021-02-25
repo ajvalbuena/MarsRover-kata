@@ -133,4 +133,15 @@ public class MarsRoverTest {
         assertEquals(finalRover.getPoint().getX(), expectedRover.getPoint().getX());
         assertEquals(finalRover.getDirection(), expectedRover.getDirection());
     }
+
+    @Test
+    public void facingOneObstacle() {
+        MarsRover initRover = new MarsRover(new Point(0,0), Direction.N);
+        List<Command> commands = Arrays.asList(Command.F);
+        MarsRover expectedRover = new MarsRover(new Point(0,0), Direction.N);
+        MarsRover finalRover = initRover.move(commands, initRover);
+        assertEquals(finalRover.getPoint().getY(), expectedRover.getPoint().getY());
+        assertEquals(finalRover.getPoint().getX(), expectedRover.getPoint().getX());
+        assertEquals(finalRover.getDirection(), expectedRover.getDirection());
+    }
 }
