@@ -15,7 +15,7 @@ public class Command {
         return movement.applyVector(rover);
     }
 
-    MarsRover moveWithObstacles(MarsRover initRover, List<Point> obstacles) throws Exception {
+    MarsRover move(MarsRover initRover, List<Point> obstacles) throws Exception {
         Movement movement = movementByDirection.get(initRover.getDirection());
         MarsRover newRover = movement.applyVector(initRover);
         if (newRover.getPoint().thereIsAnObstacle(obstacles)) {

@@ -20,6 +20,19 @@ public class MarsRover {
         return rover;
     }
 
+    public MarsRover move(List<Command> commands, MarsRover initRover, List<Point> obstacles)  {
+        MarsRover rover = initRover;
+        try {
+            for (Command command : commands) {
+                rover = command.move(rover, obstacles);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            return rover;
+        }
+    }
+
     public Direction getDirection() {
         return direction;
     }
@@ -28,17 +41,6 @@ public class MarsRover {
         return point;
     }
 
-    public MarsRover moveWithObstacles(List<Command> commands, MarsRover initRover, List<Point> obstacles) throws Exception {
-        MarsRover rover = initRover;
-        try {
-            for (Command command : commands) {
-                rover = command.moveWithObstacles(rover, obstacles);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        } finally {
-            return rover;
-        }
-    }
+
 }
 

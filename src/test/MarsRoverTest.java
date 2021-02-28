@@ -141,7 +141,7 @@ public class MarsRoverTest {
         List<Command> commands = Arrays.asList(Command.F, Command.R, Command.F, Command.F, Command.L, Command.B);
         List<Point> obstacles = Arrays.asList(new Point(1, 2), new Point(2, 0), new Point(2, 2));
         MarsRover expectedRover = new MarsRover(new Point(2, 1), Direction.N);
-        MarsRover finalRover = initRover.moveWithObstacles(commands, initRover, obstacles);
+        MarsRover finalRover = initRover.move(commands, initRover, obstacles);
         assertEquals(finalRover.getPoint().getY(), expectedRover.getPoint().getY());
         assertEquals(finalRover.getPoint().getX(), expectedRover.getPoint().getX());
         assertEquals(finalRover.getDirection(), expectedRover.getDirection());
