@@ -1,6 +1,7 @@
 package main;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Command {
     private HashMap<Direction, Movement> movementByDirection;
@@ -12,6 +13,13 @@ public class Command {
     MarsRover move(MarsRover rover) {
         Movement movement = movementByDirection.get(rover.getDirection());
         return movement.applyVector(rover);
+    }
+
+    MarsRover moveWithObstacles(MarsRover initRover, List<Point> obstacles) {
+        Movement movement = movementByDirection.get(initRover.getDirection());
+        MarsRover newRover = movement.applyVector(initRover);
+        if (newRover.getPoint().thereIsAnObstacle(obstacles)) return initRover;
+        return newRover;
     }
 
 

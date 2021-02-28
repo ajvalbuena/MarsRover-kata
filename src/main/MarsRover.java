@@ -28,5 +28,12 @@ public class MarsRover {
         return point;
     }
 
+    public MarsRover moveWithObstacles(List<Command> commands, MarsRover initRover, List<Point> obstacles) {
+        MarsRover rover = initRover;
+        for (Command command : commands) {
+            rover = command.moveWithObstacles(rover, obstacles);
+        }
+        return rover;
+    }
 }
 
