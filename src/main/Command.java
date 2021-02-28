@@ -15,10 +15,12 @@ public class Command {
         return movement.applyVector(rover);
     }
 
-    MarsRover moveWithObstacles(MarsRover initRover, List<Point> obstacles) {
+    MarsRover moveWithObstacles(MarsRover initRover, List<Point> obstacles) throws Exception {
         Movement movement = movementByDirection.get(initRover.getDirection());
         MarsRover newRover = movement.applyVector(initRover);
-        if (newRover.getPoint().thereIsAnObstacle(obstacles)) return initRover;
+        if (newRover.getPoint().thereIsAnObstacle(obstacles)) {
+            throw new Exception("There is an obstacle in the route. Rover cannot continue");
+        }
         return newRover;
     }
 
