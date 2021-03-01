@@ -10,13 +10,9 @@ public class Command {
         this.movementByDirection = movementByDirection;
     }
 
-    MarsRover move(MarsRover rover) {
-        Movement movement = movementByDirection.get(rover.getDirection());
-        return movement.applyVector(rover);
-    }
-
     MarsRover move(MarsRover initRover, List<Point> obstacles) throws Exception {
-        MarsRover newRover = this.move(initRover);
+        Movement movement = movementByDirection.get(initRover.getDirection());
+        MarsRover newRover = movement.applyVector(initRover);
         if (newRover.getPoint().thereIsAnObstacle(obstacles)) {
             throw new Exception("There is an obstacle in the route. Rover cannot continue");
         }

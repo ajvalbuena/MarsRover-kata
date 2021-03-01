@@ -12,16 +12,8 @@ public class MarsRover {
         this.direction = direction;
     }
 
-    public MarsRover move(List<Command> commands, MarsRover marsRover) {
-        MarsRover rover = marsRover;
-        for (Command command : commands) {
-            rover = command.move(rover);
-        }
-        return rover;
-    }
-
-    public MarsRover move(List<Command> commands, MarsRover initRover, List<Point> obstacles)  {
-        MarsRover rover = initRover;
+    public MarsRover move(List<Command> commands, List<Point> obstacles)  {
+        MarsRover rover = this;
         try {
             for (Command command : commands) {
                 rover = command.move(rover, obstacles);
