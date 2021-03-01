@@ -16,8 +16,7 @@ public class Command {
     }
 
     MarsRover move(MarsRover initRover, List<Point> obstacles) throws Exception {
-        Movement movement = movementByDirection.get(initRover.getDirection());
-        MarsRover newRover = movement.applyVector(initRover);
+        MarsRover newRover = this.move(initRover);
         if (newRover.getPoint().thereIsAnObstacle(obstacles)) {
             throw new Exception("There is an obstacle in the route. Rover cannot continue");
         }
