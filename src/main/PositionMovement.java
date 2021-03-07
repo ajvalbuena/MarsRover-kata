@@ -15,7 +15,7 @@ public class PositionMovement implements Movement {
         int newY = this.y + rover.getPoint().getY();
 
         Point newPoint = new Point(applyLimitsInMars(newX), applyLimitsInMars(newY));
-        return new MarsRover(newPoint, rover.getDirection());
+        return new MarsRover(newPoint, rover.getDirection(), rover.getConsole());
     }
 
     private int applyLimitsInMars(int coordinate) {

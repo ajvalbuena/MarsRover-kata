@@ -5,11 +5,13 @@ import java.util.List;
 public class MarsRover {
     private Point point;
     private Direction direction;
+    private Console console;
 
 
-    public MarsRover(Point point, Direction direction) {
+    public MarsRover(Point point, Direction direction, Console console) {
         this.point = point;
         this.direction = direction;
+        this.console = console;
     }
 
     public MarsRover move(List<Command> commands, List<Point> obstacles)  {
@@ -19,7 +21,7 @@ public class MarsRover {
                 rover = command.move(rover, obstacles);
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+           console.log(e.getMessage());
         } finally {
             return rover;
         }
@@ -33,6 +35,8 @@ public class MarsRover {
         return point;
     }
 
-
+    public Console getConsole() {
+        return console;
+    }
 }
 

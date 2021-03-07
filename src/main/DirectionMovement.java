@@ -9,7 +9,7 @@ public class DirectionMovement implements Movement {
 
     @Override
     public MarsRover applyVector(MarsRover rover){
-        return new MarsRover(rover.getPoint(), this.direction);
+        return new MarsRover(rover.getPoint(), this.direction, rover.getConsole());
     }
 
 
